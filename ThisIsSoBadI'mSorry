@@ -1,0 +1,108 @@
+
+import java.util.Scanner;
+import java.lang.*;
+public class ClothingPick {
+    public static void main(String[] args)
+    { 
+        Scanner input = new Scanner(System.in); 
+
+        System.out.println("Welcome to Mystery Shop! Please enter your username and password to continue.");
+        System.out.println("If you have not registered, you can visit our website at www.generic-store.com and sign up.");
+        //assuming best case scenario for now. If I have time I will include if they enter the wrong username/password.
+        System.out.print("Username: ");
+        String user = input.nextLine();
+        System.out.println("You have entered: " + user);
+        System.out.print("Password: ");
+        String password = input.nextLine();
+        System.out.println("Your password has been accepted. Lets continue.");
+        
+        Shopping().ClothingItem();
+        Shopping().season();
+        Shopping().pickingOut();
+        
+        System.out.println("Are you done shopping? (Y/N?)");
+        Char yn = input.next.charAt(0);
+        if(yn.charAt(0) == 'y' || yn.charAt(0) == 'y')
+        {
+            System.out.println("Okay! We will continue shopping");
+            Shopping().ClothingItem();
+            MysteryShop().season();
+            Shopping().pickingOut();
+        }
+        else{
+            System.out.println("Your order has been saved. Please continue to the website to pay.");
+            System.exit();
+        }
+        input.close();
+    }
+
+
+    abstract class MysteryShop
+    {
+        void summer()
+        {
+            System.out.println("You chose Summer!");
+        }
+        void autumn()
+        {
+            System.out.println("You chose Autumn!");
+        }
+        void winter()
+        {
+            System.out.println("You chose Winter!");
+        }
+        void spring()
+        {
+            System.out.println("You chose Spring!");
+        }
+    
+    }
+
+    public class Shopping extends MysteryShop
+    {
+        public void season()
+        {
+            Scanner szn = new Scanner(System.in);
+            String choice = "";
+            System.out.println("Which season would you like to shop for first?");
+            choice = szn.nextLine();
+            if(choice.charAt(1) == 'u'|| choice.charAt(1) == 'U')
+            {
+                summer();
+            }
+            else if(choice.charAt(0) == 'a' || choice.charAt(0) == 'A' || choice.charAt(0) == 'F' || choice.charAt(0) == 'f')
+            {
+                autumn();
+            }
+            else if(choice.charAt(0) == 'w'|| choice.charAt(0) == 'W')
+            {
+                winter();
+            }
+            else if(choice.charAt(1) == 'p'|| choice.charAt(1) == 'P')
+            {
+                spring();
+            }
+            
+            szn.close();
+        }
+        public void clothingItem()
+        {
+            System.out.println("Would you like to shop for a top or bottoms?");
+            Scanner choice = new Scanner(System.in);
+            String item = choice.nextString();
+            if(item.charAt(0) == 'T' || item.charAt(0) == 't')
+            {
+                System.out.println("You chose top!");
+            }
+            else if(item.charAt(0) == 'B' || item.charAt(0) == 'b')
+            {
+                System.out.println("You chose bottom!");
+            }
+            
+        }
+        public void pickingOut()
+        {
+            System.out.println("Currently shopping...");
+        }
+}
+}
